@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block content %}
+<table class="table table-bordered">
+    <tr>
+        <th>Title</th>
+        <th>Name</th>
+        <th>Date</th>
+        <th>Update</th>
+        <th>Delete</th>
+    </tr>
+    {% for x in data %}
+    <tr>
+        <td>{{ x.title }}</td>
+        <td>{{ x.name }}</td>
+        <td>{{ x.date }}</td>
+        <td>
+            <form action="{% url 'update' x.id %}"  >
+<!--                                {% csrf_token %}&ndash;&gt;-->
+            <input type="submit" class="btn btn-danger" value="Update" />
+            </form>
+        </td>
+
+        <td>
+            <form action="{% url 'delts' x.id %}" method="POST" >
+                                {% csrf_token %}
+                <input type="submit" class="btn btn-danger" value="Delete" />
+            </form>
+        </td>
+    </td>
+
+
+
+    </tr>
+    {% endfor %}
+</table>
+         {% endblock %}
